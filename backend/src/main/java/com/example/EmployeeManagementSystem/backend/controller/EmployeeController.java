@@ -19,13 +19,13 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/employee")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:5173")
 public class EmployeeController {
 
 	private final EmployeeService service;
 
 	public EmployeeController(EmployeeService service) {
-		this.service = service;
+		this.service = service;	
 	}
 
 	@GetMapping
@@ -34,7 +34,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping
-	public EmployeeDTO add(@Valid @RequestBody EmployeeDTO dto) {
+	public EmployeeDTO add(@RequestBody EmployeeDTO dto) {
 		return service.save(dto);
 	}
 
