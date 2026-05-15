@@ -34,7 +34,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping
-	public EmployeeDTO add(@RequestBody EmployeeDTO dto) {
+	public EmployeeDTO add(@Valid @RequestBody EmployeeDTO dto) {
 		return service.save(dto);
 	}
 
@@ -44,8 +44,9 @@ public class EmployeeController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id) {
 		service.delete(id);
+		return "data deleted";
 	}
 
 }
